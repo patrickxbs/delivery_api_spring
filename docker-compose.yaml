@@ -1,0 +1,28 @@
+services:
+  api:
+    image: patrick/delivery
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql_db
+    networks:
+      - delivery-network
+
+  mysql_db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: delivery
+    ports:
+      - "3306:3306"
+    volumes:
+      - delivery-volume-data:/var/lib/mysql
+    networks:
+      - delivery-network
+
+volumes:
+  delivery-volume-data:
+
+networks:
+  delivery-network:
+
