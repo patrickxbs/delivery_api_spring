@@ -1,11 +1,11 @@
-FROM eclipse-temurin:17-jdk-alpine AS builder
+FROM maven:3.9.9-amazoncorretto-17 AS builder
 
 WORKDIR /app
 
 COPY . .
-RUN ./mvnw package -DskipTests
+RUN mvn clean package -DskipTests
 
-FROM eclipse-temurin:17-jre-alpine
+FROM amazoncorretto:17-alpine
 
 WORKDIR /app
 

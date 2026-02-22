@@ -1,6 +1,7 @@
 services:
   api:
-    image: patrick/delivery
+    build: .
+    restart: always
     ports:
       - "8080:8080"
     depends_on:
@@ -14,7 +15,7 @@ services:
       MYSQL_ROOT_PASSWORD: 1234
       MYSQL_DATABASE: delivery
     ports:
-      - "3306:3306"
+      - "3307:3306"
     volumes:
       - delivery-volume-data:/var/lib/mysql
     networks:
