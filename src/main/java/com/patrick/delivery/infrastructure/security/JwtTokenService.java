@@ -6,6 +6,7 @@ import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.patrick.delivery.infrastructure.entity.UsuarioEntity;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
 @Service
+@Slf4j
 public class JwtTokenService {
 
     @Value("${api.security.token.secret}")
@@ -47,9 +49,11 @@ public class JwtTokenService {
                     .getSubject();
         }
         catch (TokenExpiredException ex) {
+            log.info("JWT expirado: " + ex.getMessage());
             throw new TokenExpiredException("Token expirado", ex.getExpiredOn());
         }
         catch (JWTVerificationException ex) {
+            log.info("Erro na validação do JWT: " + ex.getMessage());
             throw new JWTVerificationException("Token inválido ou expirado.");
         }
     }
