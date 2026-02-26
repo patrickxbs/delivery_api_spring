@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
@@ -59,10 +60,10 @@ public class JwtTokenService {
     }
 
     private Instant creationDate() {
-        return LocalDateTime.now().toInstant(ZoneOffset.of("-03:00"));
+        return Instant.now();
     }
 
     private Instant expirationDate() {
-        return LocalDateTime.now().plusHours(3).toInstant(ZoneOffset.of("-03:00"));
+        return Instant.now().plus(Duration.ofHours(3));
     }
 }
