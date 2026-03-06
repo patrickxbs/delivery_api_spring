@@ -13,6 +13,22 @@ Este projeto tem como objetivo oferecer endpoints seguros e organizados para:
 O sistema possui controle de acesso baseado em papéis (`ADMIN` e `CLIENTE`) e foi estruturado utilizando princípios de arquitetura limpa, com divisão entre controllers, services, use cases e gateways.
 
 ---
+## Deploy na AWS
+
+**A aplicação foi deployada na AWS utilizando:**
+* EC2 para execução da API em container Docker
+* RDS (MySQL) como banco de dados
+* Docker Hub para armazenamento da imagem
+* GitHub Actions para pipeline CI/CD (build, push e deploy automático)
+
+A infraestrutura foi organizada utilizando VPC, subnets públicas e privadas, além de Security Groups para controle de acesso entre os serviços.
+
+### Diagrama da Arquitetura
+<img width="1334" height="657" alt="image" src="https://github.com/user-attachments/assets/22583471-b633-446e-ae25-ad54eaf4854e" />
+
+* Atualmente a aplicação não está em execução para evitar custos desnecessários na infraestrutura da AWS.
+
+---
 
 ## ⚙️ Tecnologias utilizadas
 
